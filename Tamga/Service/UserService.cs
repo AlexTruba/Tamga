@@ -32,15 +32,14 @@
             {
                 if (_unitOfWork.Repository<User>().Find(t=>t.Id==item.Id)!=null)
                 {
-                    _unitOfWork.Repository<User>().Attach(Mapper.Map<UserViewModel, User>(item));
-                    _unitOfWork.Save();
+                    _unitOfWork.Repository<User>().Update(Mapper.Map<UserViewModel, User>(item));
                 }
                 else
                 {
                     _unitOfWork.Repository<User>().Add(Mapper.Map<UserViewModel, User>(item));
-                    _unitOfWork.Save();
                 }
             }
+            _unitOfWork.Save();
         }
     }
 }

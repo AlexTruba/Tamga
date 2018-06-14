@@ -68,12 +68,23 @@
         {
             _dataContext.Entry(entity).State = EntityState.Modified;
         }
+        public bool Update(T entity)
+        {
+            var item = Find(t=>t.Id == entity.Id);
+            if (item == null)
+            {
+                return false;
+            }
+
+            _dataContext.Entry(item).CurrentValues.SetValues(entity);
+            return true;
+        }
 
         public void Delete(T entity)
         {
             _dataSet.Remove(entity);
         }
-
+        
         public void DeleteRange(IEnumerable<T> entities)
         {
             _dataSet.RemoveRange(entities);

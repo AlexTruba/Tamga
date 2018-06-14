@@ -23,8 +23,6 @@ namespace Tamga
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
               "~/Scripts/bootstrap.js",
-              "~/Scripts/bootstrap-datepicker.js",
-              "~/Scripts/DatePickerReady.js",
               "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/custom").Include(
@@ -32,7 +30,6 @@ namespace Tamga
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/bootstrap-datepicker3.css",
                       "~/Content/site.css"));
         }
     }

@@ -14,6 +14,7 @@
         T Get(Guid id);
         Task<T> GetAsync(Guid id);
         T Find(Func<T, bool> predicate);
+        bool Update(T entity);
         Task<T> FindAsync(Expression<Func<T, bool>> predicate);
         void Add(T entity);
         void AddRange(IEnumerable<T> entities);
