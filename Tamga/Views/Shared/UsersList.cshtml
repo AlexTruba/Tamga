@@ -1,0 +1,7 @@
+﻿@using Tamga.Models
+@model List<UserViewModel>
+
+@foreach (var item in Model)
+{
+    @Html.Action("GetListItem", item)
+}

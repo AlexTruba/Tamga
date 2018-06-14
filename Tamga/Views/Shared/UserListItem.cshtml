@@ -1,0 +1,59 @@
+﻿@using Tamga.Models
+@model UserViewModel
+<form action="/" method="post" class="user-form table-row">
+    @Html.HiddenFor(t => t.Id)
+    <div class="row-item">
+        <div class="input-field">
+            @Html.LabelFor(m => m.Name, new { @for = "Name_" + Model.Id }): @Html.EditorFor(t => t.Name, new { htmlAttributes = new { @id = "Name_" + Model.Id } })
+        </div>
+        <div class="error-message"> @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })</div>
+    </div>
+    <div class="row-item">
+        <div class="input-field">
+            @Html.LabelFor(m => m.Surname, new { @for = "Surname_" + Model.Id }): @Html.EditorFor(t => t.Surname, new { htmlAttributes = new { @id = "Surname_" + Model.Id } })
+        </div>
+        <div class="error-message"> @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })</div>
+    </div>
+
+    <div class="row-item">
+        <div class="input-field">
+            @Html.LabelFor(m => m.Patronymic, new { @for = "Patronymic_" + Model.Id }): @Html.EditorFor(t => t.Patronymic, new { htmlAttributes = new { @id = "Patronymic_" + Model.Id } })
+        </div>
+        <div class="error-message"> @Html.ValidationMessageFor(m => m.Patronymic, "", new { @class = "text-danger" })</div>
+    </div>
+
+    <div class="row-item">
+        <div class="input-field">
+            @Html.LabelFor(m => m.PhoneNumber, new { @for = "PhoneNumber_" + Model.Id }): @Html.PhoneNumberFor(t => t.PhoneNumber, new { htmlAttributes = new { @id = "PhoneNumber_" + Model.Id } })
+        </div>
+        <div class="error-message"> @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })</div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row-item">
+        <div class="input-field inline-checkbox">
+            @Html.EditorFor(t => t.Employed, new { htmlAttributes = new { @class = "change-checkbox", onclick = "onClickEvent();", @id = "Employed_" + Model.Id } })  @Html.LabelFor(m => m.Employed, new { @for = "Employed_" + Model.Id })
+        </div>
+        <div class="error-message"> @Html.ValidationMessageFor(m => m.Employed, "", new { @class = "text-danger" })</div>
+    </div>
+    @{
+        var employedClass = Model.Employed ? "" : "hide";
+    }
+    <div class="row-item change-visible @employedClass">
+        <div class="input-field">
+            @Html.LabelFor(m => m.OrganizationName, new { @for = "OrganizationName_" + Model.Id }): @Html.EditorFor(t => t.OrganizationName, new { htmlAttributes = new { @id = "OrganizationName_" + Model.Id } })
+        </div>
+        <div class="error-message"> @Html.ValidationMessageFor(m => m.OrganizationName, "", new { @class = "text-danger" })</div>
+    </div>
+    <div class="row-item change-visible @employedClass">
+        <div class="input-field">
+            @Html.LabelFor(m => m.StartOnUtc, new { @for ="StartOnUtc_" + Model.Id }): @Html.EditorFor(t => t.StartOnUtc, new { htmlAttributes = new { @class = "need-change-date-js", @id = "StartOnUtc_" + Model.Id, @data_change = Model.StartOnUtc?.ToString("yyyy-MM-dd") } })
+
+        </div>
+        <div class="error-message"> @Html.ValidationMessageFor(m => m.StartOnUtc, "", new { @class = "text-danger" })</div>
+    </div>
+</form>
+<script>
+    $(".need-change-date-js").each(function (index, el) {
+        $(el).val($(el).attr("data-change"));
+    });
+</script>

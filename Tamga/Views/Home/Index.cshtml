@@ -1,0 +1,14 @@
+﻿@using Tamga.Models
+@model UserViewModel
+
+@{Html.EnableClientValidation();}
+@{Html.EnableUnobtrusiveJavaScript();}
+<div class="add-user-form">
+</div>
+<div class="form-group col-md-12">
+    <button onclick="save()" class="btn btn-primary">Сохранить</button>
+    <button onclick="showAddBlock()" class="btn btn-success">Добавить пользователя</button>
+</div>
+<div class="user-list" id="reload">
+    <script>$(".user-list").load('@Url.Action("GetUser", "Home")');</script>
+</div>
